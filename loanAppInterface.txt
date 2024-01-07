@@ -1,0 +1,167 @@
+a!formLayout(
+  label: if(
+    or(ri!LI_approvalFlow),
+    "Loan Approval",
+    "Loan Application"
+  ),
+  contents: {
+    a!sectionLayout(
+      label: "Personal Details",
+      contents: {
+        a!columnsLayout(
+          columns: {
+            a!columnLayout(
+              contents: {
+                a!textField(
+                  label: "Name",
+                  labelPosition: "ABOVE",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{fcbb51b5-abc8-4939-8e29-a86ca579b7fe}name'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{fcbb51b5-abc8-4939-8e29-a86ca579b7fe}name']},
+                  refreshAfter: "UNFOCUS",
+                  readOnly: or(ri!LI_approvalFlow),
+                  validations: {}
+                ),
+                a!textField(
+                  label: "Email",
+                  labelPosition: "ABOVE",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{922146ea-da34-491b-bec0-e93fd230529a}email'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{922146ea-da34-491b-bec0-e93fd230529a}email']},
+                  refreshAfter: "UNFOCUS",
+                  readOnly: or(ri!LI_approvalFlow),
+                  validations: {}
+                )
+              }
+            ),
+            a!columnLayout(
+              contents: {
+                a!textField(
+                  label: "Address",
+                  labelPosition: "ABOVE",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{61131c17-25ab-4d7e-bc3c-e7ad7b20cd15}address'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{61131c17-25ab-4d7e-bc3c-e7ad7b20cd15}address']},
+                  refreshAfter: "UNFOCUS",
+                  readOnly: or(ri!LI_approvalFlow),
+                  validations: {}
+                ),
+                a!textField(
+                  label: "Phone",
+                  labelPosition: "ABOVE",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{a69eb0a1-eeba-4df4-9e90-d92a80e4c543}phone'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{a69eb0a1-eeba-4df4-9e90-d92a80e4c543}phone']},
+                  refreshAfter: "UNFOCUS",
+                  readOnly: or(ri!LI_approvalFlow),
+                  validations: {}
+                )
+              }
+            )
+          }
+        )
+        
+      }
+    ),
+    a!sectionLayout(
+      label: "Loan details",
+      contents: {
+        a!columnsLayout(
+          columns: {
+            a!columnLayout(
+              contents: {
+                a!integerField(
+                  label: "Loan Amount",
+                  labelPosition: "ABOVE",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{d5604b8f-46a7-4250-85c7-a35601276844}loanAmt'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{d5604b8f-46a7-4250-85c7-a35601276844}loanAmt']},
+                  refreshAfter: "UNFOCUS",
+                  readOnly: or(ri!LI_approvalFlow),
+                  validations: {}
+                )
+              }
+            ),
+            a!columnLayout(
+              contents: {
+                a!dropdownField(
+                  choiceLabels: cons!LI_LOAN_PURPOSE_LABELS,
+                  choiceValues: cons!LI_LOAN_PURPOSE_VALUES,
+                  label: "Purpose",
+                  labelPosition: "ABOVE",
+                  placeholder: "--- Select a Value ---",
+                  value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{6873bfbf-b0eb-4dc8-8269-7c6d06390496}purpose'],
+                  saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{6873bfbf-b0eb-4dc8-8269-7c6d06390496}purpose']},
+                  searchDisplay: "AUTO",
+                  disabled: or(ri!LI_approvalFlow),
+                  validations: {}
+                )
+              }
+            ),
+            a!columnLayout(
+              contents: {}
+            )
+          }
+        )
+        
+      }
+    ),
+    a!sectionLayout(
+      label: "Approval Decision",
+      contents: {
+        a!radioButtonField(
+          choiceLabels: {"Approved", "Rejected"},
+          choiceValues: {1, 2},
+          label: "Radio Buttons",
+          labelPosition: "COLLAPSED",
+          value: ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{0abf7871-9301-47f1-804d-10cffa585b96}status'],
+          saveInto: {ri!LI_loanApplication['recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{0abf7871-9301-47f1-804d-10cffa585b96}status']},
+          choiceLayout: "COMPACT",
+          choiceStyle: "CARDS",
+          required: true,
+          validations: {}
+        )
+      }
+    )
+  },
+  buttons: a!buttonLayout(
+    primaryButtons: {
+      a!buttonWidget(
+        label: "Submit",
+        saveInto: {
+          a!save(
+            ri!LI_loanApplication,
+            a!update(
+              data: ri!LI_loanApplication,
+              index: {
+                'recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{c44a631e-0fb8-4f8f-8a35-5da6c6a6ec60}createdBy',
+                'recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{13ac2c74-93f2-457c-9281-f59bc3bf7ba4}createdOn',
+                'recordType!{336d7845-22a0-4df8-bbfe-82c4cb8656e1}LI Loan Application.fields.{0abf7871-9301-47f1-804d-10cffa585b96}status'
+              },
+              value: {
+                user(loggedInUser(), "username"),
+                now(),
+                cons!LI_LOAN_STATUS[2]
+              }
+            )
+          ),
+          a!save(
+            ri!button,
+            cons!LI_BUTTON_VALUES[1]
+          )
+        },
+        submit: true,
+        style: "SOLID"
+      )
+    },
+    secondaryButtons: {
+      a!buttonWidget(
+        label: "Cancel",
+        saveInto: {
+          a!save(
+            ri!button,
+            cons!LI_BUTTON_VALUES[2]
+          )
+        },
+        submit: true,
+        style: "OUTLINE",
+        validate: false
+      )
+    }
+  )
+)
